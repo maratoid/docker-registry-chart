@@ -1,0 +1,20 @@
+imageRegistry = "index.docker.io/library"
+imageName = "registry" 
+dockerTag = "latest"
+pullPolicy = "Always"
+dnsPolicy = "ClusterFirst"
+restartPolicy = "Always"
+registryCacheType = "redis"
+registryGcsBucket = "maratoid-registry"
+registryGcsPrefix = "registry"
+registryHttpSecretName = "registry-http-secret"
+registryHttpSecretKeyName = "secret"
+registryGceSecretName = "gce-key-secret"
+registryGceSecretKeyName = "keyfile"
+externalPort = 5000
+sessionAffinity = "None"
+
+[redis]
+imageRegistry = "https://index.docker.io/library"
+imageName = "redis" 
+dockerTag = "latest"

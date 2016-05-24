@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: redis
+        provider: redis
+    spec:
+      containers:
+      - name: redis
+        image: {{.imageRegistry}}/{{.imageName}}:{{.dockerTag}}
+        env:
+        - name: MASTER
+          value: "true"
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - mountPath: /redis-master-data
+          name: data
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  ports:
+  - port: 6379
+  selector:
+    provider: redis
