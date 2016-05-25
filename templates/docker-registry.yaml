@@ -40,9 +40,16 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   name: docker-registry
+  labels:
+    name: docker-registry
 spec:
   replicas: 1
+  selector:
+    name: docker-registry
   template:
+    metadata:
+      labels:
+        name: docker-registry
     spec:
       containers:
       - image: {{.imageRegistry}}/{{.imageName}}:{{.dockerTag}}
@@ -73,6 +80,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: docker-registry
+  labels:
+    name: docker-registry
 spec:
   ports:
   - name: docker-registry

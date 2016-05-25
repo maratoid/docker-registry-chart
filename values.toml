@@ -1,6 +1,6 @@
 imageRegistry = "index.docker.io/library"
 imageName = "registry" 
-dockerTag = "latest"
+dockerTag = "2"
 pullPolicy = "Always"
 dnsPolicy = "ClusterFirst"
 restartPolicy = "Always"
@@ -15,6 +15,6 @@ externalPort = 5000
 sessionAffinity = "None"
 
 [redis]
-imageRegistry = "https://index.docker.io/library"
+imageRegistry = "index.docker.io/library"
 imageName = "redis" 
 dockerTag = "latest"
